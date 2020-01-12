@@ -20,5 +20,23 @@ export default {
           Authorization: `Bearer ${token}`
         }
       })
+  },
+  uploadImages(images, token) {
+    // map to an array of promises
+    const promises = Array.from(images).map(image => {
+      // in js
+      const formData = new FormData();
+      formData.append('image', image);
+      // axios return 1 promise
+      return axios.post(
+        `${ROOT_URL}/3/image`, formData, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      )
+    });
+    // resolve until all promises are resolved
+    return Promise.all(promises);
   }
 }
