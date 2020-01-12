@@ -1,5 +1,6 @@
 import api from '@/api/imgur'
 import qs from 'qs'
+
 const state = {
   token: null,
 };
@@ -13,7 +14,11 @@ const actions = {
     api.login();
   },
   logout: ({commit}) => {
-    // vuex: use store.commit to commit (mutation, payload)
+    /* ES2015:argument destructuring
+    *  (context) => {
+    *     context.commit();
+    *  }
+    * */
     commit('setToken', {token: null});
   },
   finalizeLogin: ({commit}, hash) => {
