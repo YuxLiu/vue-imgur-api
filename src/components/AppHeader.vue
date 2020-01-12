@@ -1,24 +1,36 @@
 <template>
-<div class="ui secondary pointing menu">
-  <a href="" class="active item">Image Storage</a>
-  <div class="right menu">
-    <a href="#" class="ui item" @click="login">Login</a>
+  <div class="ui secondary pointing menu">
+    <a href="" class="active item">Image Storage</a>
+    <div class="right menu">
+      <div v-if="isLoggedIn" class="horizontal">
+        <a class="item">Galleries</a>
+<!--        clear the href="" to avoid unpredicted redirection-->
+        <a class="item">Upload</a>
+        <a class="item">Logout</a>
+      </div>
+      <a v-else href="#" class="ui item" @click="login">Login</a>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
 // 94 wire up component to store.actions
-import { mapActions } from 'vuex';
+import {mapActions, mapGetters} from 'vuex';
 
 export default {
   name: "AppHeader",
+  computed: {
+    ...mapGetters(['isLoggedIn']),
+  },
   methods: {
     ...mapActions(['login']),
-  }
+  },
 }
 </script>
 
 <style scoped>
-
+.horizontal {
+  display: flex;
+  flex-direction: row;
+}
 </style>
