@@ -6,7 +6,7 @@
         <a class="item">Galleries</a>
 <!--        clear the href="" to avoid unpredicted redirection-->
         <a class="item">Upload</a>
-        <a class="item">Logout</a>
+        <a class="item" @click="logout">Logout</a>
       </div>
       <a v-else href="#" class="ui item" @click="login">Login</a>
     </div>
@@ -23,7 +23,7 @@ export default {
     ...mapGetters(['isLoggedIn']),
   },
   methods: {
-    ...mapActions(['login']),
+    ...mapActions(['login', 'logout']),
   },
 }
 </script>
