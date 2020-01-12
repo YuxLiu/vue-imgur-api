@@ -1,6 +1,7 @@
 <template>
-  <div>
-    upload
+  <div class="dropper">
+    <input type="file" />
+    <span>Drag files here!</span>
   </div>
 </template>
 
@@ -11,5 +12,23 @@ export default {
 </script>
 
 <style scoped>
+.dropper {
+  height: 30vh;
+  border: 2px solid #d6d6d7;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.dropper:hover {
+  background: #eee;
+}
+input {
+  width: 100%;
+  height: 30vh;
+  position: absolute;
+  opacity: 0;
+}
 
 </style>
